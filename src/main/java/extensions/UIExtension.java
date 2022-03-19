@@ -1,6 +1,7 @@
 package extensions;
 
 import annotations.Driver;
+import annotations.WaitDriver;
 import driver.DriverFactory;
 import listeners.MouseListener;
 import org.junit.jupiter.api.extension.AfterEachCallback;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -20,7 +22,6 @@ import java.util.Set;
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
 
     private EventFiringWebDriver driver = null;
-
     private WebDriverWait webDriverWait = null;
 
     private Set<Field> getAnnotatedFields(Class<? extends Annotation> annotation, ExtensionContext extensionContext) {
@@ -43,33 +44,34 @@ public class UIExtension implements BeforeEachCallback, AfterEachCallback {
         driver.register(new MouseListener());
         webDriverWait = new WebDriverWait(driver, 10);
 
-        Set<Field> fields = getAnnotatedFields(Driver.class, extensionContext);
+        Set<Field> fieldsDriver = getAnnotatedFields(Driver.class, extensionContext);
+        Set<Field> fieldsWaitDriver = getAnnotatedFields(WaitDriver.class, extensionContext);
 
-        for (Field field : fields) {
+        for (Field field : fieldsDriver) {
             if (field.getType().getName().equals(WebDriver.class.getName())) {
-                AccessController.doPrivileged((PrivilegedAction<Void>)
-                        () -> {
-                            try {
-                                field.setAccessible(true);
-                                field.set(extensionContext.getTestInstance().get(), driver);
-                            } catch (IllegalAccessException e) {
-                                throw new Error(String.format("Could not access or set webdriver in field: %s - is this field public?", field), e);
-                            }
-                            return null;
-                        }
-                );
-            } else if (field.getType().getName().equals(WebDriverWait.class.getName())) {
-                AccessController.doPrivileged((PrivilegedAction<Void>)
-                        () -> {
-                            try {
-                                field.setAccessible(true);
-                                field.set(extensionContext.getTestInstance().get(), webDriverWait);
-                            } catch (IllegalAccessException e) {
-                                throw new Error(String.format("Could not access or set webdriverWait in field: %s - is this field public?", field), e);
-                            }
-                            return null;
-                        }
-                );
+                AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
+                    try {
+                        field.setAccessible(true);
+                        field.set(extensionContext.getTestInstance().get(), driver);
+                    } catch (IllegalAccessException e) {
+                        throw new Error(String.format("Could not access or set webdriver in field: %s - is this field public?", field), e);
+                    }
+                    return null;
+                });
+            }
+        }
+
+        for (Field field : fieldsWaitDriver) {
+            if (field.getType().getName().equals(WebDriverWait.class.getName())) {
+                AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
+                    try {
+                        field.setAccessible(true);
+                        field.set(extensionContext.getTestInstance().get(), webDriverWait);
+                    } catch (IllegalAccessException e) {
+                        throw new Error(String.format("Could not access or set webdriverWait in field: %s - is this field public?", field), e);
+                    }
+                    return null;
+                });
             }
         }
     }

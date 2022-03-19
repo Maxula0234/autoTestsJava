@@ -2,6 +2,7 @@ package pages;
 
 import actions.CommonActions;
 import annotations.UrlPrefix;
+import io.qameta.allure.Step;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,6 +37,7 @@ public abstract class BasePage<T> extends CommonActions<T> {
         return "";
     }
 
+    @Step("Открываем страницу")
     public T open() {
         driver.get(getBaseUrl() + getUrlPrefix());
 

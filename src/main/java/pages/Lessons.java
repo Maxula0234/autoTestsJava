@@ -3,7 +3,7 @@ package pages;
 import annotations.UrlPrefix;
 import org.openqa.selenium.WebDriver;
 
-@UrlPrefix("/")
+@UrlPrefix("/lessons/")
 public class Lessons extends BasePage<Lessons> {
 
     public Lessons(WebDriver driver) {

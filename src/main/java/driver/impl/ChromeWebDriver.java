@@ -19,6 +19,7 @@ public class ChromeWebDriver implements IDriver {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--no-first-run");
+        chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--enable-extensions");
         chromeOptions.addArguments("--homepage=about:blank");
         chromeOptions.addArguments("--ignore-certificate-errors");
@@ -39,7 +40,8 @@ public class ChromeWebDriver implements IDriver {
             }
 
             return new ChromeDriver(chromeOptions);
-        } else
+        } else {
             return new RemoteWebDriver(getRemoteUrl(), chromeOptions);
+        }
     }
 }

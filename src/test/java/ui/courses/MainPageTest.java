@@ -21,7 +21,8 @@ public class MainPageTest {
     @Test
     public void openMainPage() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.open();
+        mainPage.open()
+                .reg.click();
         String titlePage = mainPage.getTitlePage();
         assertThat(titlePage).isNotEmpty();
     }

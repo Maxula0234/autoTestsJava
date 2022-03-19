@@ -1,6 +1,8 @@
 package driver;
 
 import driver.impl.ChromeWebDriver;
+import driver.impl.FireFoxWebDriver;
+import driver.impl.OperaWebDriver;
 import exceptions.DriverTypeNotSupported;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -19,6 +21,12 @@ public class DriverFactory implements IDriverFactory {
             }
             case "safari": {
                 return new EventFiringWebDriver(new SafariDriver());
+            }
+            case "firefox": {
+                return new EventFiringWebDriver(new FireFoxWebDriver().newDriver());
+            }
+            case "opera": {
+                return new EventFiringWebDriver(new OperaWebDriver().newDriver());
             }
             default:
                 try {

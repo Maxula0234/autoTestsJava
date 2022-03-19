@@ -11,12 +11,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @Component("//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div[@class='lessons']")
-public class FavouriteCourses extends BaseComponent<FavouriteCourses> {
+public class FavouriteCoursesComponent extends BaseComponent<FavouriteCoursesComponent> {
 
     @FindBy(xpath = "//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div/a")
     private List<WebElement> lessons;
 
-    public FavouriteCourses(WebDriver driver) {
+    public FavouriteCoursesComponent(WebDriver driver) {
         super(driver);
     }
 
