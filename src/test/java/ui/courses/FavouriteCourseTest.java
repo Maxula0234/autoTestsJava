@@ -8,6 +8,8 @@ import extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,10 +38,10 @@ public class FavouriteCourseTest {
                 .getPageTitle();
     }
 
-    @Test
-    public void specializationTest() {
-        String nameCourse = "Специализация С++";
-
+    @ParameterizedTest
+    @CsvSource({"Специализация С++",
+            "Специализация QA Automation Engineer"})
+    public void specializationTest(String nameCourse) {
         MainPage mainPage = new MainPage(driver).open();
         webDriverWait.until(ExpectedConditions.elementToBeClickable(mainPage.cookieButton))
                 .click();

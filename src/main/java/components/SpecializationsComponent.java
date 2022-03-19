@@ -45,9 +45,12 @@ public class SpecializationsComponent extends BaseComponent<SpecializationsCompo
                 .filter(f -> f.getText().contains(nameLesson))
                 .findFirst()
                 .orElseThrow(() -> new NotFoundException("Не найден курс - " + nameLesson));
-        boolean result;
 
-        webElement.click();
+        actions.moveToElement(webElement)
+                .click()
+                .build()
+                .perform();
+
         return new Lessons(driver);
     }
 
