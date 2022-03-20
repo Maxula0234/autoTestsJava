@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Component("//div[@class='container container-header2']")
-public class HeaderMenuComponent extends BaseComponent<HeaderMenuComponent> {
+public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//p[normalize-space(text())='Курсы']")
     public WebElement coursesHeaderMenu;
@@ -30,7 +30,7 @@ public class HeaderMenuComponent extends BaseComponent<HeaderMenuComponent> {
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Kotlin Backend Developer']")
     public WebElement kotlinBackendCoursesElement;
 
-    public HeaderMenuComponent(WebDriver webDriver) {
+    public HeaderMenu2Component(WebDriver webDriver) {
         super(webDriver);
     }
 

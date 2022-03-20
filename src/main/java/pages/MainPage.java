@@ -1,14 +1,16 @@
 package pages;
 
 import annotations.UrlPrefix;
-import components.header_menu.HeaderMenuComponent;
+import components.header_menu.HeaderMenu2Component;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @UrlPrefix("/")
 public class MainPage extends BasePage<MainPage> {
-    public HeaderMenuComponent headerMenuComponent;
+
+    public HeaderMenu2Component headerMenu2Component;
+
     @FindBy(css = ".header2__auth-container")
     public WebElement reg;
 
@@ -17,7 +19,7 @@ public class MainPage extends BasePage<MainPage> {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        headerMenuComponent = new HeaderMenuComponent(driver);
+        headerMenu2Component = new HeaderMenu2Component(driver);
     }
 
     public MainPage moveElementAction(WebElement webElement) {

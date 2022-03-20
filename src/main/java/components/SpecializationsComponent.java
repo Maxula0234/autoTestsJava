@@ -18,8 +18,8 @@ public class SpecializationsComponent extends BaseComponent<SpecializationsCompo
     @FindBy(xpath = "//div[@class='lessons']//a[@class='lessons__new-item lessons__new-item_big lessons__new-item_hovered']//div[@class='lessons__new-item-container']")
     private List<WebElement> lessons;
 
-    public SpecializationsComponent(WebDriver webDriver) {
-        super(webDriver);
+    public SpecializationsComponent(WebDriver driver) {
+        super(driver);
     }
 
     public Lessons clickLesson(List<WebElement> listLessons, String nameLesson) {

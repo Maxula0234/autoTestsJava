@@ -28,7 +28,6 @@ public class FavouriteCourseTest {
     @WaitDriver
     public WebDriverWait webDriverWait;
 
-
     @Test
     public void click_favourite_course_tile() {
         new MainPage(driver).open();

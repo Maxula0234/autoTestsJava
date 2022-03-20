@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import waiters.StandartWaiter;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
@@ -35,6 +37,36 @@ public abstract class CommonActions<T> {
         PageFactory.initElements(driver, this);
 
         standartWaiter = new StandartWaiter(driver);
+    }
+
+    private static <T> T convertInstanceOfObject(Object o, Class<T> clazz) {
+        try {
+            return clazz.cast(o);
+        } catch (ClassCastException e) {
+            return null;
+        }
+    }
+
+    public <T extends BasePage> T clickAndReturn(WebElement webElement, Class<T> page) {
+        webElement.click();
+        try {
+            Constructor constructor = page.getConstructor(WebDriver.class);
+            return convertInstanceOfObject(constructor.newInstance(driver), page);
+        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public <T extends BasePage> T moveElementAndClickAction(WebElement webElement, Class<T> page) {
+        actions.moveToElement(webElement).click().build().perform();
+        try {
+            Constructor constructor = page.getConstructor(WebDriver.class);
+            return convertInstanceOfObject(constructor.newInstance(driver), page);
+        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

@@ -33,11 +33,11 @@ public class MainPageTest {
         MainPage mainPage = new MainPage(driver);
 
         mainPage.open()
-                .moveElementAction(mainPage.headerMenuComponent.coursesHeaderMenu)
-                .moveElementAction(mainPage.headerMenuComponent.testingHeaderSubMenuItem)
-                .moveElementAction(mainPage.headerMenuComponent.testingSubMenuDpTriger);
+                .moveElementAction(mainPage.headerMenu2Component.coursesHeaderMenu)
+                .moveElementAction(mainPage.headerMenu2Component.testingHeaderSubMenuItem)
+                .moveElementAction(mainPage.headerMenu2Component.testingSubMenuDpTriger);
 
-        PythonCoursePage pythonCoursePage = mainPage.moveElementAndClickAction(mainPage.headerMenuComponent.pythonCoursesElement, PythonCoursePage.class);
+        PythonCoursePage pythonCoursePage = mainPage.moveElementAndClickAction(mainPage.headerMenu2Component.pythonCoursesElement, PythonCoursePage.class);
         assertThat(pythonCoursePage.getTitlePage()).isEqualToIgnoringCase("Курс по автоматизации тестирования и поиска неисправностей в бекенде и фронтенде с использованием Selenium и языка Python");
     }
 
@@ -47,10 +47,10 @@ public class MainPageTest {
         MainPage mainPage = new MainPage(driver);
 
         mainPage.open()
-                .moveElementAction(mainPage.headerMenuComponent.coursesHeaderMenu)
-                .moveElementAction(mainPage.headerMenuComponent.programmingHeaderSubMenuItem)
-                .moveElementAction(mainPage.headerMenuComponent.programmingSubMenuDpTriger);
+                .moveElementAction(mainPage.headerMenu2Component.coursesHeaderMenu)
+                .moveElementAction(mainPage.headerMenu2Component.programmingHeaderSubMenuItem)
+                .moveElementAction(mainPage.headerMenu2Component.programmingSubMenuDpTriger);
 
-        KotlinCoursePage pythonCoursePage = mainPage.moveElementAndClickAction(mainPage.headerMenuComponent.kotlinBackendCoursesElement, KotlinCoursePage.class);
+        KotlinCoursePage pythonCoursePage = mainPage.moveElementAndClickAction(mainPage.headerMenu2Component.kotlinBackendCoursesElement, KotlinCoursePage.class);
     }
 }

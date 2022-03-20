@@ -55,18 +55,6 @@ public abstract class BasePage<T> extends CommonActions<T> {
         return null;
     }
 
-
-    public <T extends BasePage> T moveElementAndClickAction(WebElement webElement, Class<T> page) {
-        actions.moveToElement(webElement).click().build().perform();
-        try {
-            Constructor constructor = page.getConstructor(WebDriver.class);
-            return convertInstanceOfObject(constructor.newInstance(driver), page);
-        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public String getTitlePage() {
         return driver.getTitle();
     }
