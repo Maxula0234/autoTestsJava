@@ -22,7 +22,7 @@ import java.util.Set;
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
 
     private EventFiringWebDriver driver = null;
-    private WebDriverWait webDriverWait = null;
+//    private WebDriverWait webDriverWait = null;
 
     private Set<Field> getAnnotatedFields(Class<? extends Annotation> annotation, ExtensionContext extensionContext) {
         Set<Field> set = new HashSet<>();
@@ -42,7 +42,6 @@ public class UIExtension implements BeforeEachCallback, AfterEachCallback {
     public void beforeEach(ExtensionContext extensionContext) {
         driver = new DriverFactory().getDriver();
         driver.register(new MouseListener());
-        webDriverWait = new WebDriverWait(driver, 10);
 
         Set<Field> fieldsDriver = getAnnotatedFields(Driver.class, extensionContext);
         Set<Field> fieldsWaitDriver = getAnnotatedFields(WaitDriver.class, extensionContext);
@@ -61,19 +60,6 @@ public class UIExtension implements BeforeEachCallback, AfterEachCallback {
             }
         }
 
-        for (Field field : fieldsWaitDriver) {
-            if (field.getType().getName().equals(WebDriverWait.class.getName())) {
-                AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
-                    try {
-                        field.setAccessible(true);
-                        field.set(extensionContext.getTestInstance().get(), webDriverWait);
-                    } catch (IllegalAccessException e) {
-                        throw new Error(String.format("Could not access or set webdriverWait in field: %s - is this field public?", field), e);
-                    }
-                    return null;
-                });
-            }
-        }
     }
 
     @Override

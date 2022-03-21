@@ -5,6 +5,8 @@ import components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.services.ReviewsPage;
+import pages.services.SubscriptionPage;
 
 @Component("//header[@class='header2_subheader']")
 public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
@@ -28,4 +30,13 @@ public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
         super(webDriver);
     }
 
+    public SubscriptionPage goToSubscription() {
+        subscription.click();
+        return new SubscriptionPage(driver);
+    }
+
+    public ReviewsPage goToReviews() {
+        reviews.click();
+        return new ReviewsPage(driver);
+    }
 }
