@@ -11,10 +11,10 @@ import java.util.List;
 @UrlPrefix("/subscription")
 public class SubscriptionPage extends BasePage<SubscriptionPage> {
 
-    @FindBy(xpath = "//div[@class='sc-9sv32s-0 doKqzP']//h2[text()='Как работает подписка?']")
+    @FindBy(xpath = "//div[contains(@class,'doKqzP')]//h2[text()='Как работает подписка?']")
     public WebElement info;
 
-    @FindBy(xpath = "//div[@class='sc-1d7enxi-0 kqgEaR']")
+    @FindBy(xpath = "//div[contains(@class,'kqgEaR')]")
     public List<WebElement> optionItemComponent;
 
     public SubscriptionPage(WebDriver webDriver) {

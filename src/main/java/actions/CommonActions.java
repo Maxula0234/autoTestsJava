@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import waiters.StandartWaiter;
 
@@ -20,6 +21,8 @@ public abstract class CommonActions<T> {
     protected WebDriver driver;
     protected StandartWaiter standartWaiter;
     protected Actions actions;
+    protected WebDriverWait webDriverWait;
+
 
     protected BiConsumer<By, Predicate<? super WebElement>> clickElementByPredicate = (By locator, Predicate<? super WebElement> predicate) -> {
         List<WebElement> elements = driver.findElements(locator).stream()
@@ -34,8 +37,9 @@ public abstract class CommonActions<T> {
     public CommonActions(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
-        PageFactory.initElements(driver, this);
+        this.webDriverWait = new WebDriverWait(driver, 10);
 
+        PageFactory.initElements(driver, this);
         standartWaiter = new StandartWaiter(driver);
     }
 
