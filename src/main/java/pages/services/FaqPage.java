@@ -1,5 +1,6 @@
 package pages.services;
 
+import annotations.UrlPrefix;
 import components.faqPage.FaqBlockComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import pages.BasePage;
 
 import java.util.List;
 
+@UrlPrefix("/faq")
 public class FaqPage extends BasePage<FaqPage> {
     @FindBy(xpath = "//h1[normalize-space( text())='Отвечаем на ваши']")
     public WebElement headerInfo;

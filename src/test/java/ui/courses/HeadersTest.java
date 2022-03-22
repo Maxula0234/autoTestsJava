@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 import pages.courses.KotlinCoursePage;
 import pages.courses.PythonCoursePage;
+import pages.services.ContactsPage;
 import pages.services.FaqPage;
 import pages.services.ReviewsPage;
 import pages.services.SubscriptionPage;
@@ -81,7 +82,7 @@ public class HeadersTest {
     }
 
     @Test
-    @DisplayName("Проверим переход с главной на FAQ")
+    @DisplayName("Переход с главной на FAQ")
     public void checkGoToFaq() {
         FaqPage faqPage = new MainPage(driver)
                 .open()
@@ -90,5 +91,18 @@ public class HeadersTest {
 
         assertThat(faqPage.headerInfo.isDisplayed()).isTrue();
         assertThat(faqPage.faqBlockComponent.faqBlockButton).isNotEmpty();
+    }
+
+    @Test
+    @DisplayName("Переход с главной в контакты")
+    public void checkGoToContacts() {
+        ContactsPage contactsPage = new MainPage(driver)
+                .open()
+                .acceptCookie()
+                .headerMenu1Component.goToContactsPage();
+
+        contactsPage.socialMediaComponent.checkSocialMedia();
+        log.info("Страница контактов отображена");
+        log.info("Социальные сети видны");
     }
 }

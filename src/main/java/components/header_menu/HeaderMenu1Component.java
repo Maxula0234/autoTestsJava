@@ -5,6 +5,7 @@ import components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.services.ContactsPage;
 import pages.services.FaqPage;
 import pages.services.ReviewsPage;
 import pages.services.SubscriptionPage;
@@ -44,5 +45,10 @@ public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
     public FaqPage goToFaqPage() {
         faq.click();
         return new FaqPage(driver);
+    }
+
+    public ContactsPage goToContactsPage() {
+        contacts.click();
+        return new ContactsPage(driver);
     }
 }
