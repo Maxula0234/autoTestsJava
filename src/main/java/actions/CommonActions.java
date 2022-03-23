@@ -37,7 +37,7 @@ public abstract class CommonActions<T> {
     public CommonActions(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
-        this.webDriverWait = new WebDriverWait(driver, 10);
+        this.webDriverWait = new WebDriverWait(driver, 45);
 
         PageFactory.initElements(driver, this);
         standartWaiter = new StandartWaiter(driver);
@@ -54,7 +54,7 @@ public abstract class CommonActions<T> {
     public <T extends BasePage> T clickAndReturn(WebElement webElement, Class<T> page) {
         webElement.click();
         try {
-            Constructor constructor = page.getConstructor(WebDriver.class);
+            Constructor<T> constructor = page.getConstructor(WebDriver.class);
             return convertInstanceOfObject(constructor.newInstance(driver), page);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public abstract class CommonActions<T> {
     public <T extends BasePage> T moveElementAndClickAction(WebElement webElement, Class<T> page) {
         actions.moveToElement(webElement).click().build().perform();
         try {
-            Constructor constructor = page.getConstructor(WebDriver.class);
+            Constructor<T> constructor = page.getConstructor(WebDriver.class);
             return convertInstanceOfObject(constructor.newInstance(driver), page);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
