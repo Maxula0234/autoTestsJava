@@ -10,6 +10,9 @@ public class ContactsPage extends BasePage<ContactsPage> {
     @FindBy(xpath = "//div[contains(@class,'kfHYcg')]/div[text()='Контакты']")
     public WebElement title;
 
+    @FindBy(xpath = "//div[text()='Реквизиты']/following-sibling::div")
+    public WebElement requisites;
+
     public SocialMediaComponent socialMediaComponent;
 
     public ContactsPage(WebDriver driver) {
