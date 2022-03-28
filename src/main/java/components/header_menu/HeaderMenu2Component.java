@@ -9,16 +9,16 @@ import pages.categories.ProgrammingCategoriesPage;
 import pages.courses.KotlinCoursePage;
 import pages.courses.PythonCoursePage;
 //todo убрать по два класса в СЕЛЕКТОРАХ
-@Component("//div[@class='container container-header2']")
+@Component("//div[contains(@class,'container-header2')]")
 public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
-    @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//p[normalize-space(text())='Курсы']")
+    @FindBy(xpath = ".//p[normalize-space(text())='Курсы']")
     private WebElement coursesHeaderMenu;
 
-    @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Тестирование']")
+    @FindBy(xpath = ".//a[@title='Тестирование']")
     private WebElement testingHeaderSubMenuItem;
 
-    @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Программирование']")
+    @FindBy(xpath = ".//a[@title='Программирование']")
     private WebElement programmingHeaderSubMenuItem;
 
     @FindBy(xpath = "//a[contains(@title,'Тестирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
@@ -27,10 +27,10 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
     @FindBy(xpath = "//a[contains(@title,'Программирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
     private WebElement programmingSubMenuDpTrigger;
 
-    @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Python QA Engineer']")
+    @FindBy(xpath = ".//a[@title='Python QA Engineer']")
     private WebElement pythonCoursesElement;
 
-    @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Kotlin Backend Developer']")
+    @FindBy(xpath = ".//a[@title='Kotlin Backend Developer']")
     private WebElement kotlinBackendCoursesElement;
 
     public HeaderMenu2Component(WebDriver webDriver) {

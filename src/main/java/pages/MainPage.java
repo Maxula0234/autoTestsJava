@@ -4,7 +4,9 @@ import annotations.UrlPrefix;
 import components.SpecializationsComponent;
 import components.header_menu.HeaderMenu1Component;
 import components.header_menu.HeaderMenu2Component;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +21,7 @@ public class MainPage extends BasePage<MainPage> {
     @FindBy(css = ".header2__auth-container")
     public WebElement reg;
 
-    @FindBy(xpath = "//div[@class='cookies__margin-block js-cookie']//button[text()='Œ ']")
+    @FindBy(css = ".cookies .cookies__button")
     public WebElement cookieButton;
 
     public MainPage(WebDriver driver) {
@@ -35,7 +37,14 @@ public class MainPage extends BasePage<MainPage> {
     }
 
     public MainPage acceptCookie() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(cookieButton)).click();
+
+        try{
+            cookieButton.click();
+        }catch (WebDriverException e){
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click()", cookieButton);
+
+        }
+
         return this;
     }
 
