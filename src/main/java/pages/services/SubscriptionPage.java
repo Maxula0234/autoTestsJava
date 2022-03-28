@@ -8,17 +8,27 @@ import pages.BasePage;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @UrlPrefix("/subscription")
 public class SubscriptionPage extends BasePage<SubscriptionPage> {
 
     @FindBy(xpath = "//div[contains(@class,'doKqzP')]//h2[text()='Как работает подписка?']")
-    public WebElement info;
+    private WebElement info;
 
     @FindBy(xpath = "//div[contains(@class,'kqgEaR')]")
-    public List<WebElement> optionItemComponent;
+    private List<WebElement> optionItemComponent;
 
     public SubscriptionPage(WebDriver webDriver) {
         super(webDriver);
     }
 
+    public void checkSubscriptionPage() {
+        assertAll(
+                () -> assertThat(info.isDisplayed()).as("Не отображен элемент 'Как работает подписка?'").isTrue(),
+                () -> assertThat(optionItemComponent).as("Не найдены варианты подпискок").isNotEmpty()
+        );
+    }
 }

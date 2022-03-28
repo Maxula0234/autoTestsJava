@@ -4,6 +4,8 @@ import annotations.UrlPrefix;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @UrlPrefix("/kotlin")
 public class KotlinCoursePage extends BasePage<KotlinCoursePage> {
 
@@ -11,4 +13,7 @@ public class KotlinCoursePage extends BasePage<KotlinCoursePage> {
         super(webDriver);
     }
 
+    public void checkKotlinCoursePage(){
+        assertThat(getTitlePage()).as("").isNotEmpty();
+    }
 }

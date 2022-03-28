@@ -59,4 +59,6 @@ public abstract class BasePage<T> extends CommonActions<T> {
         return driver.getTitle();
     }
 
-}
+    public String getUrl(){
+       return getBaseUrl() + getUrlPrefix();
+    }}

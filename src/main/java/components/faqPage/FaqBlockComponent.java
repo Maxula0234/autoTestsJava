@@ -12,9 +12,13 @@ import java.util.List;
 public class FaqBlockComponent extends BasePage<FaqBlockComponent> {
 
     @FindBy(xpath = "//div[contains(@class,'tabs-blank__section')]")
-    public List<WebElement> faqBlockButton;
+    private List<WebElement> faqBlockButton;
 
     public FaqBlockComponent(WebDriver driver) {
         super(driver);
+    }
+
+    public List<WebElement> getBlockButtonFaq() {
+        return faqBlockButton;
     }
 }

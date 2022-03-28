@@ -13,7 +13,6 @@ import pages.Lessons;
 import pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @ExtendWith(UIExtension.class)
@@ -56,7 +55,7 @@ public class MainPageTest {
                 .specializationsComponent
                 .sortedLessonByDate()
                 .clickLessons(0);
-        assertTrue(lessons.spec.isDisplayed());
-        log.info("Нашли курс с ближайшей датой - " + lessons.startDate.getText());
+        lessons.specIsDisplayed();
+        log.info("Нашли курс с ближайшей датой - " + lessons.getStartDate().getText());
     }
 }

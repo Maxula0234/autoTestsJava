@@ -5,6 +5,7 @@ import annotations.WaitDriver;
 import components.FavouriteCoursesComponent;
 import extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -18,16 +19,15 @@ public class FavouriteCourseTest {
     @Driver
     public WebDriver driver;
 
-    @WaitDriver
-    public WebDriverWait webDriverWait;
-
     @Test
+    @DisplayName(" ликнем по первому попул€рному курсу")
     public void click_favourite_course_tile() {
         new MainPage(driver).open();
 
         new FavouriteCoursesComponent(driver)
                 .clickLessonItem()
-                .getPageTitle();
+                .checkLessonsPage();
     }
+
 
 }

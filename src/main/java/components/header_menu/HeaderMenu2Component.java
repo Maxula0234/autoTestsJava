@@ -5,33 +5,67 @@ import components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.courses.KotlinCoursePage;
+import pages.courses.PythonCoursePage;
 
 @Component("//div[@class='container container-header2']")
 public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//p[normalize-space(text())='Курсы']")
-    public WebElement coursesHeaderMenu;
+    private WebElement coursesHeaderMenu;
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Тестирование']")
-    public WebElement testingHeaderSubMenuItem;
+    private WebElement testingHeaderSubMenuItem;
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Программирование']")
-    public WebElement programmingHeaderSubMenuItem;
+    private WebElement programmingHeaderSubMenuItem;
 
     @FindBy(xpath = "//a[contains(@title,'Тестирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
-    public WebElement testingSubMenuDpTriger;
+    private WebElement testingSubMenuDpTrigger;
 
     @FindBy(xpath = "//a[contains(@title,'Программирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
-    public WebElement programmingSubMenuDpTriger;
+    private WebElement programmingSubMenuDpTrigger;
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Python QA Engineer']")
-    public WebElement pythonCoursesElement;
+    private WebElement pythonCoursesElement;
 
     @FindBy(xpath = "//div[@class='header2-menu header2-menu_main']//a[@title='Kotlin Backend Developer']")
-    public WebElement kotlinBackendCoursesElement;
+    private WebElement kotlinBackendCoursesElement;
 
     public HeaderMenu2Component(WebDriver webDriver) {
         super(webDriver);
     }
 
+    public HeaderMenu2Component moveToCoursesHeaderMenu() {
+        actions.moveToElement(coursesHeaderMenu).pause(300).perform();
+        return this;
+    }
+
+    public HeaderMenu2Component moveToTestingHeaderSubMenuItem() {
+        actions.moveToElement(testingHeaderSubMenuItem).pause(300).perform();
+        return this;
+    }
+    public HeaderMenu2Component moveToProgrammingHeaderSubMenuItem() {
+        actions.moveToElement(programmingHeaderSubMenuItem).pause(300).perform();
+        return this;
+    }
+
+    public HeaderMenu2Component moveToTestingSubMenuDpTrigger() {
+        actions.moveToElement(testingSubMenuDpTrigger).pause(300).perform();
+        return this;
+    }
+    public HeaderMenu2Component moveToProgrammingSubMenuDpTrigger() {
+        actions.moveToElement(programmingSubMenuDpTrigger).pause(300).perform();
+        return this;
+    }
+
+    public PythonCoursePage goToPythonCourse() {
+        return moveElementAndClickAction(pythonCoursesElement, PythonCoursePage.class);
+    }
+
+    public KotlinCoursePage goToKotlinCourse() {
+        return moveElementAndClickAction(kotlinBackendCoursesElement, KotlinCoursePage.class);
+    }
+
+//    public
 }

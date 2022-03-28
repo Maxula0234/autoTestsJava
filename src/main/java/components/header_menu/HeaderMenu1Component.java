@@ -14,19 +14,19 @@ import pages.services.SubscriptionPage;
 public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
 
     @FindBy(xpath = ".//a[@title='Подписка']")
-    public WebElement subscription;
+    private WebElement subscription;
 
     @FindBy(xpath = ".//a[@title='Отзывы']")
-    public WebElement reviews;
+    private WebElement reviews;
 
     @FindBy(xpath = ".//a[@title='FAQ']")
-    public WebElement faq;
+    private WebElement faq;
 
     @FindBy(xpath = ".//a[@title='OTUS JOURNAL']")
-    public WebElement otusJournal;
+    private WebElement otusJournal;
 
     @FindBy(xpath = ".//a[@title='Контакты']")
-    public WebElement contacts;
+    private WebElement contacts;
 
     public HeaderMenu1Component(WebDriver webDriver) {
         super(webDriver);

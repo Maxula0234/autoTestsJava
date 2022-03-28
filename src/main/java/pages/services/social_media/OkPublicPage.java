@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class OkPublicPage extends BasePage<OkPublicPage> {
 
     @FindBy(xpath = "//div[@class='toolbar_logo_img']")
-    public WebElement logoOk;
+    private WebElement logoOk;
 
     public OkPublicPage(WebDriver driver) {
         super(driver);

@@ -24,11 +24,14 @@ public class SpecializationsComponent extends BaseComponent<SpecializationsCompo
 
     By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
 
-    @FindBy(xpath = "//div[@class='lessons']//a[@class='lessons__new-item lessons__new-item_big lessons__new-item_hovered']//div[@class='lessons__new-item-container']")
+    LessonComponent allLessons;
+
+    @FindBy(xpath = ".//div[@class='lessons__new-item-container']")
     private List<WebElement> lessons;
 
     public SpecializationsComponent(WebDriver driver) {
         super(driver);
+        allLessons = new LessonComponent(driver);
     }
 
     public Lessons clickLesson(List<WebElement> listLessons, String nameLesson) {
@@ -102,4 +105,6 @@ public class SpecializationsComponent extends BaseComponent<SpecializationsCompo
                 .collect(Collectors.toList());
         return this;
     }
+
+
 }
