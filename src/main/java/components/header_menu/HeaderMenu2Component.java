@@ -5,9 +5,10 @@ import components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.categories.ProgrammingCategoriesPage;
 import pages.courses.KotlinCoursePage;
 import pages.courses.PythonCoursePage;
-
+//todo убрать по два класса в —≈Ћ≈ “ќ–ј’
 @Component("//div[@class='container container-header2']")
 public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
@@ -67,5 +68,8 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
         return moveElementAndClickAction(kotlinBackendCoursesElement, KotlinCoursePage.class);
     }
 
-//    public
+    public ProgrammingCategoriesPage goToProgrammingCategoriesPage(){
+        programmingHeaderSubMenuItem.click();
+        return new ProgrammingCategoriesPage(driver);
+    }
 }

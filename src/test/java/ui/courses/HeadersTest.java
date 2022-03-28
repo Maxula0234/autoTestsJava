@@ -38,22 +38,6 @@ public class HeadersTest {
     }
 
     @Test
-    @DisplayName("Откроем курс 'Kotlin Backend Developer'")
-    public void openCourseKotlin() {
-        MainPage mainPage = new MainPage(driver)
-                .open()
-                .acceptCookie();
-
-        mainPage.headerMenu2Component
-                .moveToCoursesHeaderMenu()
-                .moveToProgrammingHeaderSubMenuItem()
-                .moveToProgrammingSubMenuDpTrigger();
-
-        KotlinCoursePage kotlinCoursePage = mainPage.headerMenu2Component.goToKotlinCourse();
-        kotlinCoursePage.checkKotlinCoursePage();
-    }
-
-    @Test
     @DisplayName("Проверим страницу с информацией о подписке")
     public void checkSubscription() {
         SubscriptionPage subscriptionPage = new MainPage(driver)
