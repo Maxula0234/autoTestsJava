@@ -8,12 +8,19 @@ import pages.BasePage;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @UrlPrefix("/reviews")
 public class ReviewsPage extends BasePage<ReviewsPage> {
+
     @FindBy(xpath = "//a[contains(@href,'reviews')]//div[contains(@class,'fvPXwD')]")
-    public List<WebElement> reviewsItems;
+    private List<WebElement> reviewsItems;
 
     public ReviewsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void checkReviewsPage() {
+        assertThat(reviewsItems).as("Отзыввы не найдены").isNotEmpty();
     }
 }

@@ -12,6 +12,7 @@ import pages.services.social_media.VkPublicPage;
 
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,25 +21,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
 
     @FindBy(xpath = "//a[text()='Вконтакте']")
-    public WebElement vk;
+    private WebElement vk;
 
     @FindBy(xpath = "//a[text()='Facebook']")
-    public WebElement faceBook;
+    private WebElement faceBook;
 
     @FindBy(xpath = "//a[text()='ОК']")
-    public WebElement ok;
+    private WebElement ok;
 
     @FindBy(xpath = "//a[text()='Дзен']")
-    public WebElement dzen;
+    private WebElement dzen;
 
     @FindBy(xpath = "//a[text()='YouTube']")
-    public WebElement youTube;
+    private WebElement youTube;
 
     @FindBy(xpath = "//a[text()='Канал в Telegram']")
-    public WebElement channelTelegram;
+    private WebElement channelTelegram;
 
     @FindBy(xpath = "//a[text()='Группа в Telegram']")
-    public WebElement groupTelegram;
+    private WebElement groupTelegram;
 
     public SocialMediaComponent(WebDriver driver) {
         super(driver);
@@ -47,13 +48,13 @@ public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
     @Step("Проверим отображение социальных сетей")
     public void checkSocialMedia() {
         assertAll(
-                () -> assertTrue(vk.isDisplayed()),
-                () -> assertTrue(faceBook.isDisplayed()),
-                () -> assertTrue(ok.isDisplayed()),
-                () -> assertTrue(dzen.isDisplayed()),
-                () -> assertTrue(youTube.isDisplayed()),
-                () -> assertTrue(channelTelegram.isDisplayed()),
-                () -> assertTrue(groupTelegram.isDisplayed())
+                () -> assertThat(vk.isDisplayed()).as("Вк не отображен").isTrue(),
+                () -> assertThat(faceBook.isDisplayed()).as("FaceBook не отображен").isTrue(),
+                () -> assertThat(ok.isDisplayed()).as("ОК не отображен").isTrue(),
+                () -> assertThat(dzen.isDisplayed()).as("Дзен не отображен").isTrue(),
+                () -> assertThat(youTube.isDisplayed()).as("YouTube не отображен").isTrue(),
+                () -> assertThat(channelTelegram.isDisplayed()).as("Канал в ТГ не отображен").isTrue(),
+                () -> assertThat(groupTelegram.isDisplayed()).as("Группа в ТГ не отображена").isTrue()
         );
         log.info("Социальные сети отображены");
     }

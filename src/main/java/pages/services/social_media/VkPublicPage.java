@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class VkPublicPage extends BasePage<VkPublicPage> {
 
     @FindBy(xpath = "//li[contains(@class,'HeaderNav__item--logo')]")
-    public WebElement logoVk;
+    private WebElement logoVk;
 
     public VkPublicPage(WebDriver driver) {
         super(driver);
