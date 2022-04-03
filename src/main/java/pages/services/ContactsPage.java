@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class ContactsPage extends BasePage<ContactsPage> {
     public SocialMediaComponent socialMediaComponent;
-    @FindBy(xpath = "//div[contains(@class,'kfHYcg')]/div[text()='Контакты']")
+    @FindBy(xpath = "//div[contains(@class,'kfHYcg')]/div[text()='РљРѕРЅС‚Р°РєС‚С‹']")
     private WebElement title;
-    @FindBy(xpath = "//div[text()='Реквизиты']/following-sibling::div")
+    @FindBy(xpath = "//div[text()='Р РµРєРІРёР·РёС‚С‹']/following-sibling::div")
     private WebElement requisites;
 
     public ContactsPage(WebDriver driver) {
@@ -28,7 +28,7 @@ public class ContactsPage extends BasePage<ContactsPage> {
         socialMediaComponent = new SocialMediaComponent(driver);
     }
 
-    @Step("Проверим отображение реквизитов на странице 'Контакты'")
+    @Step("РџСЂРѕРІРµСЂРёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂРµРєРІРёР·РёС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ 'РљРѕРЅС‚Р°РєС‚С‹'")
     public void checkRequisites(ContactsPage contactsPage) {
         List<String> collect = Arrays.stream(contactsPage.requisites.getText().split("\n"))
                 .collect(Collectors.toList());
@@ -36,16 +36,16 @@ public class ContactsPage extends BasePage<ContactsPage> {
         Map<String, String> stringStringMap = HelperString.parseStringToMap(collect);
 
         assertAll(
-                () -> assertThat(stringStringMap.get("ООО")).contains("«Отус онлайн-образование»"),
-                () -> assertThat(stringStringMap.get("ИНН")).contains("9705100963"),
-                () -> assertThat(stringStringMap.get("КПП")).contains("771401001"),
-                () -> assertThat(stringStringMap.get("ОГРН")).contains("1177746618576"),
-                () -> assertThat(stringStringMap.get("ОКПО")).contains("16102045"),
-                () -> assertThat(stringStringMap.get("ОКАТО")).contains("4528650000"),
-                () -> assertThat(stringStringMap.get("АО")).contains("«АЛЬФА-БАНК»"),
-                () -> assertThat(stringStringMap.get("Р/С")).contains("40702810601300013780"),
-                () -> assertThat(stringStringMap.get("К/С")).contains("30101810200000000593"),
-                () -> assertThat(stringStringMap.get("БИК")).contains("044525593")
+                () -> assertThat(stringStringMap.get("РћРћРћ")).contains("В«РћС‚СѓСЃ РѕРЅР»Р°Р№РЅ-РѕР±СЂР°Р·РѕРІР°РЅРёРµВ»"),
+                () -> assertThat(stringStringMap.get("РРќРќ")).contains("9705100963"),
+                () -> assertThat(stringStringMap.get("РљРџРџ")).contains("771401001"),
+                () -> assertThat(stringStringMap.get("РћР“Р Рќ")).contains("1177746618576"),
+                () -> assertThat(stringStringMap.get("РћРљРџРћ")).contains("16102045"),
+                () -> assertThat(stringStringMap.get("РћРљРђРўРћ")).contains("4528650000"),
+                () -> assertThat(stringStringMap.get("РђРћ")).contains("В«РђР›Р¬Р¤Рђ-Р‘РђРќРљВ»"),
+                () -> assertThat(stringStringMap.get("Р /РЎ")).contains("40702810601300013780"),
+                () -> assertThat(stringStringMap.get("Рљ/РЎ")).contains("30101810200000000593"),
+                () -> assertThat(stringStringMap.get("Р‘РРљ")).contains("044525593")
         );
     }
 }

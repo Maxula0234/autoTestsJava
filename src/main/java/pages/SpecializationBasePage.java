@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SpecializationBasePage extends BasePage<SpecializationBasePage> {
 
-    @FindBy(xpath = "//div[@class='tn-atom' and text()='Специализация']")
+    @FindBy(xpath = "//div[@class='tn-atom' and text()='РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ']")
     private WebElement elementSpec;
 
     public SpecializationBasePage(WebDriver driver) {
@@ -16,6 +16,6 @@ public class SpecializationBasePage extends BasePage<SpecializationBasePage> {
     }
 
     public void checkPage() {
-        assertThat(elementSpec.isDisplayed()).as("Страница не отображена").isTrue();
+        assertThat(elementSpec.isDisplayed()).as("РЎС‚СЂР°РЅРёС†Р° РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅР°").isTrue();
     }
 }

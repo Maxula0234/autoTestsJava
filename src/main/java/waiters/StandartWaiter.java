@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Набор стандартных ожиданий
- * @author Pavel Balahonov <p.balahonov@corp.mail.ru>
  */
 public class StandartWaiter implements WaiterInt {
 

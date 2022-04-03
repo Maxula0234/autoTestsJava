@@ -17,22 +17,22 @@ public class ContactsTest {
     WebDriver driver;
 
     @Test
-    @DisplayName("Проверим переход на страничку ВК")
+    @DisplayName("РџСЂРѕРІРµСЂРёРј РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС‡РєСѓ Р’Рљ")
     public void goToVk() {
         new MainPage(driver)
                 .open()
                 .headerMenu1Component.goToContactsPage()
                 .socialMediaComponent.goToVk()
-                .checkVkPage("OTUS. Онлайн-образование | ВКонтакте");
+                .checkVkPage("OTUS. РћРЅР»Р°Р№РЅ-РѕР±СЂР°Р·РѕРІР°РЅРёРµ | Р’РљРѕРЅС‚Р°РєС‚Рµ");
     }
 
     @Test
-    @DisplayName("Проверим переход на страничку OK")
+    @DisplayName("РџСЂРѕРІРµСЂРёРј РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС‡РєСѓ OK")
     public void goToOk() {
         new MainPage(driver)
                 .open()
                 .headerMenu1Component.goToContactsPage()
                 .socialMediaComponent.goToOk()
-                .checkVkPage("OTUS. Онлайн-образование");
+                .checkVkPage("OTUS. РћРЅР»Р°Р№РЅ-РѕР±СЂР°Р·РѕРІР°РЅРёРµ");
     }
 }

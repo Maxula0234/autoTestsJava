@@ -1,23 +1,29 @@
 package components;
 
 import annotations.Component;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-@Component("//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div[@class='lessons']")
+@Component("//*[contains(@class, 'container-lessons')]/div[text()='РџРѕРїСѓР»СЏСЂРЅС‹Рµ РєСѓСЂСЃС‹']//following-sibling::div[@class='lessons']")
 public class FavouriteCoursesComponent extends BaseComponent<FavouriteCoursesComponent> {
 
     public BaseCourseTileComponent baseCourseTileComponent;
+    By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
 
-    @FindBy(xpath = "//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div/a")
+    @FindBy(xpath = "//*[contains(@class, 'container-lessons')]/div[text()='РџРѕРїСѓР»СЏСЂРЅС‹Рµ РєСѓСЂСЃС‹']//following-sibling::div/a")
     private List<WebElement> lessons;
 
     public FavouriteCoursesComponent(WebDriver driver) {
         super(driver);
-        baseCourseTileComponent = new BaseCourseTileComponent(driver, lessons);
+        baseCourseTileComponent = new BaseCourseTileComponent(driver, getLessons());
+    }
+
+    public List<WebElement> getLessons() {
+        return driver.findElements(By.xpath(baseLocator + "//div[@class='lessons__new-item-container']"));
     }
 
 }

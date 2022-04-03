@@ -37,7 +37,7 @@ public abstract class BasePage<T> extends CommonActions<T> {
         return "";
     }
 
-    @Step("Открываем страницу")
+    @Step("РћС‚РєСЂС‹РІР°РµРј СЃС‚СЂР°РЅРёС†Сѓ")
     public T open() {
         driver.get(getBaseUrl() + getUrlPrefix());
 

@@ -14,49 +14,48 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-@Component("//div[contains(@class,'dHdjyV') and text()='Социальные сети']")
+@Component("//div[contains(@class,'dHdjyV') and text()='РЎРѕС†РёР°Р»СЊРЅС‹Рµ СЃРµС‚Рё']")
 public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
 
-    @FindBy(xpath = "//a[text()='Вконтакте']")
+    @FindBy(xpath = "//a[text()='Р’РєРѕРЅС‚Р°РєС‚Рµ']")
     private WebElement vk;
 
     @FindBy(xpath = "//a[text()='Facebook']")
     private WebElement faceBook;
 
-    @FindBy(xpath = "//a[text()='ОК']")
+    @FindBy(xpath = "//a[text()='РћРљ']")
     private WebElement ok;
 
-    @FindBy(xpath = "//a[text()='Дзен']")
+    @FindBy(xpath = "//a[text()='Р”Р·РµРЅ']")
     private WebElement dzen;
 
     @FindBy(xpath = "//a[text()='YouTube']")
     private WebElement youTube;
 
-    @FindBy(xpath = "//a[text()='Канал в Telegram']")
+    @FindBy(xpath = "//a[text()='РљР°РЅР°Р» РІ Telegram']")
     private WebElement channelTelegram;
 
-    @FindBy(xpath = "//a[text()='Группа в Telegram']")
+    @FindBy(xpath = "//a[text()='Р“СЂСѓРїРїР° РІ Telegram']")
     private WebElement groupTelegram;
 
     public SocialMediaComponent(WebDriver driver) {
         super(driver);
     }
 
-    @Step("Проверим отображение социальных сетей")
+    @Step("РџСЂРѕРІРµСЂРёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚РµР№")
     public void checkSocialMedia() {
         assertAll(
-                () -> assertThat(vk.isDisplayed()).as("Вк не отображен").isTrue(),
-                () -> assertThat(faceBook.isDisplayed()).as("FaceBook не отображен").isTrue(),
-                () -> assertThat(ok.isDisplayed()).as("ОК не отображен").isTrue(),
-                () -> assertThat(dzen.isDisplayed()).as("Дзен не отображен").isTrue(),
-                () -> assertThat(youTube.isDisplayed()).as("YouTube не отображен").isTrue(),
-                () -> assertThat(channelTelegram.isDisplayed()).as("Канал в ТГ не отображен").isTrue(),
-                () -> assertThat(groupTelegram.isDisplayed()).as("Группа в ТГ не отображена").isTrue()
+                () -> assertThat(vk.isDisplayed()).as("Р’Рє РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(faceBook.isDisplayed()).as("FaceBook РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(ok.isDisplayed()).as("РћРљ РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(dzen.isDisplayed()).as("Р”Р·РµРЅ РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(youTube.isDisplayed()).as("YouTube РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(channelTelegram.isDisplayed()).as("РљР°РЅР°Р» РІ РўР“ РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅ").isTrue(),
+                () -> assertThat(groupTelegram.isDisplayed()).as("Р“СЂСѓРїРїР° РІ РўР“ РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅР°").isTrue()
         );
-        log.info("Социальные сети отображены");
+        log.info("РЎРѕС†РёР°Р»СЊРЅС‹Рµ СЃРµС‚Рё РѕС‚РѕР±СЂР°Р¶РµРЅС‹");
     }
 
     public VkPublicPage goToVk() {

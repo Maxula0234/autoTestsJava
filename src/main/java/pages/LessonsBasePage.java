@@ -24,9 +24,9 @@ public class LessonsBasePage extends BasePage<LessonsBasePage> {
     }
 
     public void checkLessonPage() {
-        assertThat(courseTeacher.isDisplayed()).as("На странице курса отсутствуют преподователи").isTrue();
-        assertThat(courseInfo.isDisplayed()).as("На странице курса отсутствует информация").isTrue();
-        assertThat(courseAbout.isDisplayed()).as("На странице курса отсутствует информация о чем курс").isTrue();
+        assertThat(courseTeacher.isDisplayed()).as("РќР° СЃС‚СЂР°РЅРёС†Рµ РєСѓСЂСЃР° РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ РїСЂРµРїРѕРґРѕРІР°С‚РµР»Рё").isTrue();
+        assertThat(courseInfo.isDisplayed()).as("РќР° СЃС‚СЂР°РЅРёС†Рµ РєСѓСЂСЃР° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЏ").isTrue();
+        assertThat(courseAbout.isDisplayed()).as("РќР° СЃС‚СЂР°РЅРёС†Рµ РєСѓСЂСЃР° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‡РµРј РєСѓСЂСЃ").isTrue();
     }
 
 }
