@@ -8,23 +8,23 @@ import org.openqa.selenium.support.FindBy;
 import pages.categories.ProgrammingCategoriesPage;
 import pages.courses.KotlinCoursePage;
 import pages.courses.PythonCoursePage;
-//todo убрать по два класса в СЕЛЕКТОРАХ
+
 @Component("//div[contains(@class,'container-header2')]")
 public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
-    @FindBy(xpath = ".//p[normalize-space(text())='Курсы']")
+    @FindBy(xpath = ".//p[normalize-space(text())='РљСѓСЂСЃС‹']")
     private WebElement coursesHeaderMenu;
 
-    @FindBy(xpath = ".//a[@title='Тестирование']")
+    @FindBy(xpath = ".//a[@title='РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ']")
     private WebElement testingHeaderSubMenuItem;
 
-    @FindBy(xpath = ".//a[@title='Программирование']")
+    @FindBy(xpath = ".//a[@title='РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ']")
     private WebElement programmingHeaderSubMenuItem;
 
-    @FindBy(xpath = "//a[contains(@title,'Тестирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
+    @FindBy(xpath = "//a[contains(@title,'РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
     private WebElement testingSubMenuDpTrigger;
 
-    @FindBy(xpath = "//a[contains(@title,'Программирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
+    @FindBy(xpath = "//a[contains(@title,'РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
     private WebElement programmingSubMenuDpTrigger;
 
     @FindBy(xpath = ".//a[@title='Python QA Engineer']")

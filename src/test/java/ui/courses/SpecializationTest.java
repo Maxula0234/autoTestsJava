@@ -12,6 +12,9 @@ import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 import pages.SpecializationBasePage;
 
+import java.text.ParseException;
+import java.time.LocalDate;
+
 @Slf4j
 @ExtendWith(UIExtension.class)
 public class SpecializationTest {
@@ -19,31 +22,53 @@ public class SpecializationTest {
     @Driver()
     WebDriver driver;
 
+
     @ParameterizedTest
-    @DisplayName("Выбор и переход по специализации")
-    @CsvSource({"Специализация С++",
-            "Специализация QA Automation Engineer"})
+    @DisplayName("Р’С‹Р±РѕСЂ Рё РїРµСЂРµС…РѕРґ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё")
+    @CsvSource({"РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РЎ++",
+            "РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ QA Automation Engineer"})
     public void specializationTest(String nameCourse) {
         new MainPage(driver)
                 .open()
                 .acceptCookie()
-                .specializationsComponent.baseCourseTileComponent
-                .getLessonByName(nameCourse)
-                .goToSpecialization()
+                .specializationsComponent
+                .goToSpecializationByName(nameCourse)
                 .checkPage();
 
     }
 
     @Test
-    @DisplayName("Выбор и переход по специализации с ближайшей датой")
-    public void specializationTestChoiceFirstByDate() {
+    @DisplayName("Р’С‹Р±РѕСЂ Рё РїРµСЂРµС…РѕРґ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё СЃ Р±Р»РёР¶Р°Р№С€РµР№ РґР°С‚РѕР№")
+    public void specializationTestChoiceFirstByDate() throws ParseException {
         SpecializationBasePage specializationBasePage = new MainPage(driver)
                 .open()
                 .acceptCookie()
                 .specializationsComponent.baseCourseTileComponent
-                .sortedLessonByDate()
+                .sortedSpecializationByDate()
                 .clickSpecialization(0);
 
         specializationBasePage.checkPage();
+    }
+
+    @Test
+    @DisplayName("Р’С‹Р±РѕСЂ Рё РїРµСЂРµС…РѕРґ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё РїРѕСЃР»Рµ РґР°С‚С‹")
+    public void specializationTestChoiceAfterDate() throws ParseException {
+        LocalDate date = LocalDate.of(2022, 5, 30);
+
+        new MainPage(driver)
+                .open()
+                .acceptCookie()
+                .specializationsComponent.baseCourseTileComponent.clickSpecializationByDate(date);
+    }
+
+    @Test
+    @DisplayName("Р’С‹Р±РѕСЂ Рё РїРµСЂРµС…РѕРґ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё РІ РґР°С‚Сѓ")
+    public void specializationTestChoiceByDate() throws ParseException {
+        LocalDate date = LocalDate.of(2022, 5, 30);
+
+        new MainPage(driver)
+                .open()
+                .acceptCookie()
+                .specializationsComponent.baseCourseTileComponent.clickSpecializationByDate(date);
     }
 }

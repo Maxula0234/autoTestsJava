@@ -21,6 +21,6 @@ public class ReviewsPage extends BasePage<ReviewsPage> {
     }
 
     public void checkReviewsPage() {
-        assertThat(reviewsItems).as("Отзыввы не найдены").isNotEmpty();
+        assertThat(reviewsItems).as("РћС‚Р·С‹РІС‹ РЅРµ РЅР°Р№РґРµРЅС‹").isNotEmpty();
     }
 }

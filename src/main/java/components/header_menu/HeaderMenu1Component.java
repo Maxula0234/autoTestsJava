@@ -13,10 +13,10 @@ import pages.services.SubscriptionPage;
 @Component("//header[@class='header2_subheader']")
 public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
 
-    @FindBy(xpath = ".//a[@title='Подписка']")
+    @FindBy(xpath = ".//a[@title='РџРѕРґРїРёСЃРєР°']")
     private WebElement subscription;
 
-    @FindBy(xpath = ".//a[@title='Отзывы']")
+    @FindBy(xpath = ".//a[@title='РћС‚Р·С‹РІС‹']")
     private WebElement reviews;
 
     @FindBy(xpath = ".//a[@title='FAQ']")
@@ -25,7 +25,7 @@ public class HeaderMenu1Component extends BaseComponent<HeaderMenu1Component> {
     @FindBy(xpath = ".//a[@title='OTUS JOURNAL']")
     private WebElement otusJournal;
 
-    @FindBy(xpath = ".//a[@title='Контакты']")
+    @FindBy(xpath = ".//a[@title='РљРѕРЅС‚Р°РєС‚С‹']")
     private WebElement contacts;
 
     public HeaderMenu1Component(WebDriver webDriver) {

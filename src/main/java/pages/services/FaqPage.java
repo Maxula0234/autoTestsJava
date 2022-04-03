@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @UrlPrefix("/faq")
 public class FaqPage extends BasePage<FaqPage> {
-    @FindBy(xpath = "//h1[normalize-space(text())='Отвечаем на ваши']")
+    @FindBy(xpath = "//h1[normalize-space(text())='РћС‚РІРµС‡Р°РµРј РЅР° РІР°С€Рё']")
     private WebElement headerInfo;
 
     @FindBy(xpath = "//div[contains(@class,'faq-question__question')]")
@@ -29,8 +29,8 @@ public class FaqPage extends BasePage<FaqPage> {
 
     public void checkFaqPage() {
         assertAll(
-                () -> assertThat(headerInfo.isDisplayed()).as("Не отборажен элемент 'Отвечаем на ваши вопросы'").isTrue(),
-                () -> assertThat(faqBlockComponent.getBlockButtonFaq()).as("Не отображены категории вопросов").isNotEmpty()
+                () -> assertThat(headerInfo.isDisplayed()).as("РќРµ РѕС‚Р±РѕСЂР°Р¶РµРЅ СЌР»РµРјРµРЅС‚ 'РћС‚РІРµС‡Р°РµРј РЅР° РІР°С€Рё РІРѕРїСЂРѕСЃС‹'").isTrue(),
+                () -> assertThat(faqBlockComponent.getBlockButtonFaq()).as("РќРµ РѕС‚РѕР±СЂР°Р¶РµРЅС‹ РєР°С‚РµРіРѕСЂРёРё РІРѕРїСЂРѕСЃРѕРІ").isNotEmpty()
         );
     }
 }

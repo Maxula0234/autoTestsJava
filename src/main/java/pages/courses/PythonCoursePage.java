@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @UrlPrefix("/lessons/avtomatizaciya-web-testirovaniya/")
 public class PythonCoursePage extends BasePage<PythonCoursePage> {
 
-    private final String title = "Курс по автоматизации тестирования и поиска неисправностей в бекенде и фронтенде с использованием Selenium и языка Python";
+    private final String title = "РљСѓСЂСЃ РїРѕ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ Рё РїРѕРёСЃРєР° РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚РµР№ РІ Р±РµРєРµРЅРґРµ Рё С„СЂРѕРЅС‚РµРЅРґРµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Selenium Рё СЏР·С‹РєР° Python";
 
     public PythonCoursePage(WebDriver webDriver) {
         super(webDriver);

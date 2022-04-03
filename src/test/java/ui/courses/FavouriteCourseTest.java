@@ -18,13 +18,12 @@ public class FavouriteCourseTest {
     public WebDriver driver;
 
     @Test
-    @DisplayName("Кликнем по первому популярному курсу")
+    @DisplayName("РљР»РёРєРЅРµРј РїРѕ РїРµСЂРІРѕРјСѓ РїРѕРїСѓР»СЏСЂРЅРѕРјСѓ РєСѓСЂСЃСѓ")
     public void click_favourite_course_tile() {
         new MainPage(driver).open();
         new FavouriteCoursesComponent(driver)
                 .baseCourseTileComponent
-                .getAllLessons()
-                .get(0).goToLesson();
+                .goToLesson(0);
     }
 
 

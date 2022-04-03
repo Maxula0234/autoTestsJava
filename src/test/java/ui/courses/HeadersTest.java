@@ -22,7 +22,7 @@ public class HeadersTest {
     WebDriver driver;
 
     @Test
-    @DisplayName("Откроем курс по питону")
+    @DisplayName("РћС‚РєСЂРѕРµРј РєСѓСЂСЃ РїРѕ РїРёС‚РѕРЅСѓ")
     public void openCoursePython() {
         MainPage mainPage = new MainPage(driver)
                 .open()
@@ -38,7 +38,7 @@ public class HeadersTest {
     }
 
     @Test
-    @DisplayName("Проверим страницу с информацией о подписке")
+    @DisplayName("РџСЂРѕРІРµСЂРёРј СЃС‚СЂР°РЅРёС†Сѓ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕРґРїРёСЃРєРµ")
     public void checkSubscription() {
         SubscriptionPage subscriptionPage = new MainPage(driver)
                 .open()
@@ -47,12 +47,12 @@ public class HeadersTest {
 
         subscriptionPage.checkSubscriptionPage();
 
-        log.info("Блок с информацией о подписках: Отображен");
-        log.info("Блок с информацией о видах подписок: Отображен");
+        log.info("Р‘Р»РѕРє СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕРґРїРёСЃРєР°С…: РћС‚РѕР±СЂР°Р¶РµРЅ");
+        log.info("Р‘Р»РѕРє СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РІРёРґР°С… РїРѕРґРїРёСЃРѕРє: РћС‚РѕР±СЂР°Р¶РµРЅ");
     }
 
     @Test
-    @DisplayName("Проверим страницу с отзывами")
+    @DisplayName("РџСЂРѕРІРµСЂРёРј СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚Р·С‹РІР°РјРё")
     public void checkReviews() {
         ReviewsPage reviewsPage = new MainPage(driver)
                 .open()
@@ -63,7 +63,7 @@ public class HeadersTest {
     }
 
     @Test
-    @DisplayName("Переход с главной на FAQ")
+    @DisplayName("РџРµСЂРµС…РѕРґ СЃ РіР»Р°РІРЅРѕР№ РЅР° FAQ")
     public void checkGoToFaq() {
         FaqPage faqPage = new MainPage(driver)
                 .open()
@@ -73,7 +73,7 @@ public class HeadersTest {
     }
 
     @Test
-    @DisplayName("Переход с главной в контакты")
+    @DisplayName("РџРµСЂРµС…РѕРґ СЃ РіР»Р°РІРЅРѕР№ РІ РєРѕРЅС‚Р°РєС‚С‹")
     public void checkGoToContacts() {
         ContactsPage contactsPage = new MainPage(driver)
                 .open()
@@ -82,12 +82,12 @@ public class HeadersTest {
 
         contactsPage.socialMediaComponent.checkSocialMedia();
 
-        log.info("Страница контактов отображена");
-        log.info("Социальные сети видны");
+        log.info("РЎС‚СЂР°РЅРёС†Р° РєРѕРЅС‚Р°РєС‚РѕРІ РѕС‚РѕР±СЂР°Р¶РµРЅР°");
+        log.info("РЎРѕС†РёР°Р»СЊРЅС‹Рµ СЃРµС‚Рё РІРёРґРЅС‹");
     }
 
     @Test
-    @DisplayName("Проверка реквизитов")
+    @DisplayName("РџСЂРѕРІРµСЂРєР° СЂРµРєРІРёР·РёС‚РѕРІ")
     public void checkRequisites() {
         ContactsPage contactsPage = new MainPage(driver)
                 .open()

@@ -1,14 +1,16 @@
 package ui.courses.categoriesTest;
 
 import annotations.Driver;
-import dao.CourseTileItem;
 import extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
 import pages.MainPage;
+
+import java.time.LocalDate;
 
 @Slf4j
 @ExtendWith(UIExtension.class)
@@ -28,12 +30,26 @@ public class ProgrammingCategoriesTest {
                 .open()
                 .acceptCookie();
 
-        CourseTileItem lessonByName = mainPage.headerMenu2Component
+        mainPage.headerMenu2Component
                 .moveToCoursesHeaderMenu()
                 .moveToProgrammingHeaderSubMenuItem()
                 .goToProgrammingCategoriesPage()
-                .baseCourseTileComponent.getLessonByName(name);
+                .baseCourseTileComponent.clickLessonByName(name);
 
-        lessonByName.goToLesson();
+    }
+
+    @Test
+    public void teste(){
+        MainPage mainPage = new MainPage(driver)
+                .open()
+                .acceptCookie();
+
+        LocalDate date = LocalDate.of(2022,04,27);
+
+        mainPage.headerMenu2Component
+                .moveToCoursesHeaderMenu()
+                .moveToProgrammingHeaderSubMenuItem()
+                .goToProgrammingCategoriesPage()
+                .baseCourseTileComponent.clickLessonByDate(date);
     }
 }
