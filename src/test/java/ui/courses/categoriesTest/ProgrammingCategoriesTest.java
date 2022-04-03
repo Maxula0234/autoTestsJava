@@ -48,8 +48,7 @@ public class ProgrammingCategoriesTest {
 
         mainPage.headerMenu2Component
                 .moveToCoursesHeaderMenu()
-                .moveToProgrammingHeaderSubMenuItem()
-                .goToProgrammingCategoriesPage()
-                .baseCourseTileComponent.clickLessonByDate(date);
+                .goToCoursesByType("Подготовительные курсы")
+                .baseCourseTileComponent.getExpensivePrice();
     }
 }

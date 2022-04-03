@@ -5,7 +5,7 @@ import components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.categories.ProgrammingCategoriesPage;
+import pages.categories.CategoryLessonsPage;
 import pages.courses.KotlinCoursePage;
 import pages.courses.PythonCoursePage;
 
@@ -20,6 +20,9 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
     @FindBy(xpath = ".//a[@title='Программирование']")
     private WebElement programmingHeaderSubMenuItem;
+
+    @FindBy(xpath = ".//a[@title='Подготовительные курсы']")
+    private WebElement preparatoryСoursesItem;
 
     @FindBy(xpath = "//a[contains(@title,'Тестирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
     private WebElement testingSubMenuDpTrigger;
@@ -46,6 +49,7 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
         actions.moveToElement(testingHeaderSubMenuItem).pause(300).perform();
         return this;
     }
+
     public HeaderMenu2Component moveToProgrammingHeaderSubMenuItem() {
         actions.moveToElement(programmingHeaderSubMenuItem).pause(300).perform();
         return this;
@@ -55,6 +59,7 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
         actions.moveToElement(testingSubMenuDpTrigger).pause(300).perform();
         return this;
     }
+
     public HeaderMenu2Component moveToProgrammingSubMenuDpTrigger() {
         actions.moveToElement(programmingSubMenuDpTrigger).pause(300).perform();
         return this;
@@ -68,8 +73,37 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
         return moveElementAndClickAction(kotlinBackendCoursesElement, KotlinCoursePage.class);
     }
 
-    public ProgrammingCategoriesPage goToProgrammingCategoriesPage(){
-        programmingHeaderSubMenuItem.click();
-        return new ProgrammingCategoriesPage(driver);
+    public CategoryLessonsPage goToProgrammingCategoriesPage() {
+        moveToCoursesHeaderMenu().
+                programmingHeaderSubMenuItem.click();
+        return new CategoryLessonsPage(driver);
+    }
+
+
+    public CategoryLessonsPage goToTestingCategoriesPage() {
+        moveToCoursesHeaderMenu()
+                .testingHeaderSubMenuItem.click();
+        return new CategoryLessonsPage(driver);
+    }
+
+    public CategoryLessonsPage goToPreparatoryСourses() {
+        moveToCoursesHeaderMenu()
+                .preparatoryСoursesItem.click();
+        return new CategoryLessonsPage(driver);
+    }
+
+    public CategoryLessonsPage goToCoursesByType(String name) {
+        switch (name.toLowerCase()) {
+            case "программирование": {
+                return goToProgrammingCategoriesPage();
+            }
+            case "тестирование": {
+                return goToTestingCategoriesPage();
+            }
+            case "подготовительные курсы": {
+                return goToPreparatoryСourses();
+            }
+        }
+        return null;
     }
 }
