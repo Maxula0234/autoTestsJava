@@ -28,6 +28,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     By dateSpecializationStart = By.xpath(".//div[@class='lessons__new-item-time']");
     By nameCourse = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
     By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-start']");
+    By price = By.xpath(".//div[@class='lessons__new-item-price']");
 
     public BaseCourseTileComponent(WebDriver driver, List<WebElement> lessons) {
         super(driver);
@@ -154,5 +155,25 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
                 .orElseThrow(() -> new RuntimeException("Не найден курс до даты - " + date.toString()))
                 .getKey().click();
         return new LessonsBasePage(driver);
+    }
+
+    public WebElement getExpensivePrice() {
+        Map<WebElement, Double> map = new HashMap<>();
+
+        lessons.forEach(f -> {
+            Double priceLesson = null;
+            try {
+                priceLesson = Double.parseDouble(f.findElement(price).getText().replace(" ₽",""));
+                map.put(f, priceLesson);
+            } catch (Exception e) {
+            }
+        });
+
+
+        Map.Entry<WebElement, Double> webElementDoubleEntry = map.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow(() -> new RuntimeException("НЕ НАЙДЕН САМЫЙ ДОРОГОЙ"));
+
+        return webElementDoubleEntry.getKey();
     }
 }
