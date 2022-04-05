@@ -1,7 +1,6 @@
 package pages.services;
 
 import components.contacts.SocialMediaComponent;
-import helpers.HelperString;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -30,10 +28,12 @@ public class ContactsPage extends BasePage<ContactsPage> {
 
     @Step("Проверим отображение реквизитов на странице 'Контакты'")
     public void checkRequisites(ContactsPage contactsPage) {
-        List<String> collect = Arrays.stream(contactsPage.requisites.getText().split("\n"))
-                .collect(Collectors.toList());
+        Map<String, String> stringStringMap = Arrays.stream(contactsPage.requisites.getText().split("\n"))
+                .map(str -> str.split("^.\\s.$", 0))
+                .filter(f -> f[0].length() > 0)
+                .map(f -> f[0].split("\\s",2))
+                .collect(Collectors.toMap(s -> s[0], s -> s[1]));
 
-        Map<String, String> stringStringMap = HelperString.parseStringToMap(collect);
 
         assertAll(
                 () -> assertThat(stringStringMap.get("ООО")).contains("«Отус онлайн-образование»"),

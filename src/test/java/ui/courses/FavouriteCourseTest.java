@@ -23,7 +23,8 @@ public class FavouriteCourseTest {
         new MainPage(driver).open();
         new FavouriteCoursesComponent(driver)
                 .baseCourseTileComponent
-                .goToLesson(0);
+                .goToLesson(0)
+                .checkLessonPage();
     }
 
 

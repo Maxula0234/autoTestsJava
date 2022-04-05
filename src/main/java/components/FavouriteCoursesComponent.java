@@ -12,7 +12,7 @@ import java.util.List;
 public class FavouriteCoursesComponent extends BaseComponent<FavouriteCoursesComponent> {
 
     public BaseCourseTileComponent baseCourseTileComponent;
-    By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
+    private final By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
 
     @FindBy(xpath = "//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div/a")
     private List<WebElement> lessons;
