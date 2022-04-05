@@ -23,12 +23,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
-    List<WebElement> lessons;
-
-    By dateSpecializationStart = By.xpath(".//div[@class='lessons__new-item-time']");
-    By nameCourse = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
-    By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-start']");
-    By price = By.xpath(".//div[@class='lessons__new-item-price']");
+    private final By DATE_SPECIALIZATION_START = By.xpath(".//div[@class='lessons__new-item-time']");
+    private final By NAME_COURSE = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
+    private final By DATE_LESSON_START = By.xpath(".//div[@class='lessons__new-item-start']");
+    private final By PRICE = By.xpath(".//div[@class='lessons__new-item-price']");
+    private List<WebElement> lessons;
 
     public BaseCourseTileComponent(WebDriver driver, List<WebElement> lessons) {
         super(driver);
@@ -37,8 +36,8 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
 
     public BaseCourseTileComponent sortedSpecializationByDate() {
         lessons = lessons.stream().sorted((o1, o2) -> {
-            LocalDate date1 = getStartDateCourseV2(o1, dateSpecializationStart);
-            LocalDate date2 = getStartDateCourseV2(o2, dateSpecializationStart);
+            LocalDate date1 = getStartDateCourseV2(o1, DATE_SPECIALIZATION_START);
+            LocalDate date2 = getStartDateCourseV2(o2, DATE_SPECIALIZATION_START);
 
             return date1.compareTo(date2);
         }).collect(Collectors.toList());
@@ -86,8 +85,8 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     public Map<WebElement, LocalDate> parseDateFromTile(By dateStart) {
         Map<WebElement, LocalDate> map = new HashMap<>();
 
-        lessons.stream().forEach(f -> {
-            LocalDate startDateCourseV2 = null;
+        lessons.forEach(f -> {
+            LocalDate startDateCourseV2;
             try {
                 startDateCourseV2 = getStartDateCourseV2(f, dateStart);
                 map.put(f, startDateCourseV2);
@@ -99,7 +98,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     }
 
     public void clickSpecializationAfterDate(LocalDate date) {
-        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(dateSpecializationStart);
+        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(DATE_SPECIALIZATION_START);
 
         specializationAfterDate.entrySet()
                 .stream().filter(f -> f.getValue().isAfter(date))
@@ -109,7 +108,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     }
 
     public void clickSpecializationByDate(LocalDate date) {
-        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(dateSpecializationStart);
+        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(DATE_SPECIALIZATION_START);
 
         specializationAfterDate.entrySet()
                 .stream().filter(f -> f.getValue().isEqual(date))
@@ -136,7 +135,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     }
 
     public LessonsBasePage clickLessonByDate(LocalDate date) {
-        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(dateLessonStart);
+        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(DATE_LESSON_START);
 
         specializationAfterDate.entrySet()
                 .stream().filter(f -> f.getValue().isEqual(date))
@@ -147,7 +146,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
     }
 
     public LessonsBasePage clickLessonAfterDate(LocalDate date) {
-        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(dateLessonStart);
+        Map<WebElement, LocalDate> specializationAfterDate = parseDateFromTile(DATE_LESSON_START);
 
         specializationAfterDate.entrySet()
                 .stream().filter(f -> f.getValue().isAfter(date))
@@ -161,11 +160,12 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
         Map<WebElement, Double> map = new HashMap<>();
 
         lessons.forEach(f -> {
-            Double priceLesson = null;
+            double priceLesson;
             try {
-                priceLesson = Double.parseDouble(f.findElement(price).getText().replace(" ₽",""));
+                priceLesson = Double.parseDouble(f.findElement(PRICE).getText().replace(" ₽", ""));
                 map.put(f, priceLesson);
             } catch (Exception e) {
+                reporter.info("Стоимость курса не найдена");
             }
         });
 
