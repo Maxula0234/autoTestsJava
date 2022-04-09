@@ -1,14 +1,14 @@
 package ui.courses;
 
-import annotations.Driver;
-import components.FavouriteCoursesComponent;
-import extensions.UIExtension;
+import ui.annotations.Driver;
+import ui.components.FavouriteCoursesComponent;
+import ui.extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import pages.MainPage;
+import ui.pages.MainPage;
 
 @Slf4j
 @ExtendWith(UIExtension.class)
