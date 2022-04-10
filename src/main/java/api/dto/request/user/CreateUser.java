@@ -1,14 +1,14 @@
-package api.dto;
+package api.dto.request.user;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateUser {
 
-    @SerializedName("code")
+    @JsonProperty("code")
     private Long mCode;
-    @SerializedName("message")
+    @JsonProperty("message")
     private String mMessage;
-    @SerializedName("type")
+    @JsonProperty("type")
     private String mType;
 
     public Long getCode() {

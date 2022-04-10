@@ -1,10 +1,10 @@
 package ui.courses;
 
-import ui.annotations.Driver;
-import ui.extensions.UIExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import ui.annotations.Driver;
+import ui.extensions.UIExtension;
 import ui.pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,8 +18,7 @@ public class MainPageTest {
     @Test
     public void openMainPage() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.open()
-                .reg.click();
+        mainPage.open().clickReg();
         String titlePage = mainPage.getTitlePage();
         assertThat(titlePage).isNotEmpty();
     }

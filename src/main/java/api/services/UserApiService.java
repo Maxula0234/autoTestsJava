@@ -1,30 +1,37 @@
 package api.services;
 
-import api.dto.CreateUser;
-import api.dto.User;
-import io.restassured.http.ContentType;
+import api.ParamNames;
+import api.dto.request.user.CreateUser;
+import api.dto.response.User;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.specification.RequestSpecification;
 
-import static io.restassured.RestAssured.given;
+public class UserApiService extends BaseRestClient {
 
-public class UserApiService {
+    private final String POST_USER = "/user";
+    private final String GET_USER = "/user/{userName}";
 
-    private final String BASE_URL = "https://petstore.swagger.io/v2";
-    private final String ENDPOINT_PATH = "/user";
-    RequestSpecification requestSpecification;
-
-    public UserApiService() {
-        requestSpecification = given().baseUri(BASE_URL).contentType(ContentType.JSON);
+    @Override
+    public RequestSpecification jsonRequest() {
+        return super.jsonRequest();
     }
 
     public CreateUser createUser(User user) {
-        return requestSpecification.body(user)
-                .log().all()
+        return jsonRequest().body(user)
                 .expect().statusCode(200)
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/createUser.json"))
-                .when().post(ENDPOINT_PATH)
+                .log().all()
+                .when().post(POST_USER)
                 .as(CreateUser.class);
+    }
+
+    public User getUser(String nameUser) {
+        return jsonRequest()
+                .pathParams(ParamNames.USER_NAME, nameUser)
+                .expect().statusCode(200)
+                .log().all()
+                .when().get(GET_USER)
+                .as(User.class);
     }
 
 }

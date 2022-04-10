@@ -23,12 +23,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
+    private final By dateSpecializationStart = By.xpath(".//div[@class='lessons__new-item-time']");
+    private final By nameCourse = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
+    private final By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-start']");
+    private final By price = By.xpath(".//div[@class='lessons__new-item-price']");
     List<WebElement> lessons;
-
-    By dateSpecializationStart = By.xpath(".//div[@class='lessons__new-item-time']");
-    By nameCourse = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
-    By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-start']");
-    By price = By.xpath(".//div[@class='lessons__new-item-price']");
 
     public BaseCourseTileComponent(WebDriver driver, List<WebElement> lessons) {
         super(driver);

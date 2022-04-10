@@ -12,6 +12,7 @@ import java.util.List;
 public class SpecializationsComponent extends BaseComponent<SpecializationsComponent> {
 
     private final String ds = baseLocator + "//div[@class='lessons__new-item-container']";
+
     public BaseCourseTileComponent baseCourseTileComponent;
 
     public SpecializationsComponent(WebDriver driver) {

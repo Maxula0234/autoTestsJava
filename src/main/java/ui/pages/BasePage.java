@@ -11,6 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public abstract class BasePage<T> extends CommonActions<T> {
 
+
     public BasePage(WebDriver driver) {
         super(driver);
     }
