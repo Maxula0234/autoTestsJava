@@ -1,19 +1,18 @@
 package ui.courses;
 
-import annotations.Driver;
-import extensions.UIExtension;
+import ui.annotations.Driver;
+import ui.extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import pages.MainPage;
-import pages.courses.KotlinCoursePage;
-import pages.courses.PythonCoursePage;
-import pages.services.ContactsPage;
-import pages.services.FaqPage;
-import pages.services.ReviewsPage;
-import pages.services.SubscriptionPage;
+import ui.pages.MainPage;
+import ui.pages.courses.PythonCoursePage;
+import ui.pages.services.ContactsPage;
+import ui.pages.services.FaqPage;
+import ui.pages.services.ReviewsPage;
+import ui.pages.services.SubscriptionPage;
 
 @Slf4j
 @ExtendWith(UIExtension.class)
