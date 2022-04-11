@@ -11,9 +11,8 @@ import java.util.List;
 @Component("//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div[@class='lessons']")
 public class FavouriteCoursesComponent extends BaseComponent<FavouriteCoursesComponent> {
 
-    private final By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
-
     public BaseCourseTileComponent baseCourseTileComponent;
+    private final By dateLessonStart = By.xpath(".//div[@class='lessons__new-item-time']");
 
     @FindBy(xpath = "//*[contains(@class, 'container-lessons')]/div[text()='Популярные курсы']//following-sibling::div/a")
     private List<WebElement> lessons;

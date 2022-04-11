@@ -3,14 +3,11 @@ package ui.courses.categoriesTest;
 import ui.annotations.Driver;
 import ui.extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
 import ui.pages.MainPage;
-
-import java.time.LocalDate;
 
 @Slf4j
 @ExtendWith(UIExtension.class)
@@ -38,17 +35,4 @@ public class ProgrammingCategoriesTest {
 
     }
 
-    @Test
-    public void teste(){
-        MainPage mainPage = new MainPage(driver)
-                .open()
-                .acceptCookie();
-
-        LocalDate date = LocalDate.of(2022,03,15);
-
-        mainPage.headerMenu2Component
-                .moveToCoursesHeaderMenu()
-                .goToTestingCategoriesPage()
-                .baseCourseTileComponent.clickLessonByDate(date);
-    }
 }

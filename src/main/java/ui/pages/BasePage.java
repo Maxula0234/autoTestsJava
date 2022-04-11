@@ -8,9 +8,11 @@ import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Logger;
 
 public abstract class BasePage<T> extends CommonActions<T> {
 
+    public Logger reporter = Logger.getLogger(BasePage.class.getName());
 
     public BasePage(WebDriver driver) {
         super(driver);
@@ -46,7 +48,7 @@ public abstract class BasePage<T> extends CommonActions<T> {
 
     public <T> T page(Class<T> clazz) {
         try {
-            Constructor constructor = clazz.getConstructor(WebDriver.class);
+            Constructor<T> constructor = clazz.getConstructor(WebDriver.class);
             return convertInstanceOfObject(constructor.newInstance(driver), clazz);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
@@ -59,6 +61,7 @@ public abstract class BasePage<T> extends CommonActions<T> {
         return driver.getTitle();
     }
 
-    public String getUrl(){
-       return getBaseUrl() + getUrlPrefix();
-    }}
+    public String getUrl() {
+        return getBaseUrl() + getUrlPrefix();
+    }
+}
