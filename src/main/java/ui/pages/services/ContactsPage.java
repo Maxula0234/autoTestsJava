@@ -1,7 +1,6 @@
 package ui.pages.services;
 
 import ui.components.contacts.SocialMediaComponent;
-import ui.helpers.HelperString;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
