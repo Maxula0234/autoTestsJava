@@ -1,10 +1,12 @@
 package api.dto.request.pet;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +18,6 @@ public class TagsItem {
     private String name;
 
     @JsonProperty("id")
-    private int id;
+    private BigDecimal id;
 
 }

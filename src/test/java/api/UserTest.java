@@ -6,6 +6,7 @@ import api.services.UserApiService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,14 +23,14 @@ public class UserTest extends BaseApiTest {
         String nameNewClient = "TestovichTest" + new Random().nextInt(1123);
 
         User user = User.builder()
-                .id(0)
+                .id(new BigDecimal(0))
                 .username(nameNewClient)
                 .firstName(nameNewClient)
                 .lastName("Hor")
                 .email("test@test.ru")
                 .password("123")
                 .phone("79995551122")
-                .userStatus(0)
+                .userStatus(new BigDecimal(0))
                 .build();
 
         CreateUser createUser = userApiService.createUser(user);
@@ -46,14 +47,15 @@ public class UserTest extends BaseApiTest {
     @DisplayName("Создание клиента - негативный")
     public void createClientNegative() {
         //Передадим некорректный json запрос
+        //Проверим, что клиент не создался
 
         User user = User.builder()
-                .id(0)
+                .id(new BigDecimal(0))
                 .lastName("Hor")
                 .email("test@test.ru")
                 .password("123")
                 .phone("79995551122")
-                .userStatus(0)
+                .userStatus(new BigDecimal(0))
                 .build();
 
         CreateUser createUser = userApiService.createUser(user);

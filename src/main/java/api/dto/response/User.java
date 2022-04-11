@@ -1,6 +1,6 @@
 package api.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuppressWarnings("unused")
 @Builder
 public class User {
 

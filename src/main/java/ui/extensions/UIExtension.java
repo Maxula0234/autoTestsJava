@@ -20,7 +20,6 @@ import java.util.Set;
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
 
     private EventFiringWebDriver driver = null;
-//    private WebDriverWait webDriverWait = null;
 
     private Set<Field> getAnnotatedFields(Class<? extends Annotation> annotation, ExtensionContext extensionContext) {
         Set<Field> set = new HashSet<>();

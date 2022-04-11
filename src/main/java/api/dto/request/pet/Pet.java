@@ -1,6 +1,6 @@
 package api.dto.request.pet;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
