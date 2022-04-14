@@ -22,7 +22,6 @@ public class PetTest extends BaseApiTest {
     @Test
     @DisplayName("Создадим питомца")
     public void checkCreatePet() {
-        //Проверим создание питомца
         String name = "Ping";
         String nameCategory = "DOG";
 
@@ -62,7 +61,6 @@ public class PetTest extends BaseApiTest {
             "pending"
     })
     public void checkCreatePet2(String status) {
-        //Проверим точку "Получение питомца по статусу"
         List<Pet> petByStatus = petApiService.findPetByStatus(status);
 
         assertThat(petByStatus).allSatisfy(pet -> assertThat(pet.getStatus()).isEqualTo(status));
