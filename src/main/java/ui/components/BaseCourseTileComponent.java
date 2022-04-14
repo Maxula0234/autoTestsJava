@@ -2,6 +2,7 @@ package ui.components;
 
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,14 +20,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Slf4j
 public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
-    private final By DATE_SPECIALIZATION_START = By.xpath(".//div[@class='lessons__new-item-time']");
-    private final By NAME_COURSE = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
-    private final By DATE_LESSON_START = By.xpath(".//div[@class='lessons__new-item-start']");
-    private final By PRICE = By.xpath(".//div[@class='lessons__new-item-price']");
+    private static final By DATE_SPECIALIZATION_START = By.xpath(".//div[@class='lessons__new-item-time']");
+    private static final By NAME_COURSE = By.xpath(".//div[contains(@class,'lessons__new-item-title_with-bg')]");
+    private static final By DATE_LESSON_START = By.xpath(".//div[@class='lessons__new-item-start']");
+    private static final By PRICE = By.xpath(".//div[@class='lessons__new-item-price']");
     private List<WebElement> lessons;
 
     public BaseCourseTileComponent(WebDriver driver, List<WebElement> lessons) {
@@ -136,7 +135,7 @@ public class BaseCourseTileComponent extends BasePage<BaseCourseTileComponent> {
 
         webElement.click();
 
-        assertThat(webElement).as("Урок не найден").isNotNull();
+        Assertions.assertThat(webElement).as("Урок не найден").isNotNull();
     }
 
     public LessonsBasePage clickLessonByDate(LocalDate date) {

@@ -36,7 +36,7 @@ public class UserTest extends BaseApiTest {
         User getNewUser = userApiService.getUser(nameNewClient);
 
         assertAll(
-                () -> assertThat(getNewUser.getId()).isEqualTo(Integer.parseInt(createUser.getMessage())),
+                () -> assertThat(getNewUser.getId()).isEqualTo(new BigDecimal(createUser.getMessage())),
                 () -> assertThat(getNewUser.getUsername()).isEqualTo(nameNewClient)
         );
     }

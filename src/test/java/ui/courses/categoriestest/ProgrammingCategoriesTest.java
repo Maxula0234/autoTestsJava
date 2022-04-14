@@ -1,4 +1,4 @@
-package ui.courses.categoriesTest;
+package ui.courses.categoriestest;
 
 import ui.annotations.Driver;
 import ui.extensions.UIExtension;

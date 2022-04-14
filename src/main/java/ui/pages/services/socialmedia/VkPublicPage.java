@@ -1,4 +1,4 @@
-package ui.pages.services.social_media;
+package ui.pages.services.socialmedia;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
