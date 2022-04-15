@@ -1,7 +1,5 @@
 package ui.courses;
 
-import ui.annotations.Driver;
-import ui.extensions.UIExtension;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +7,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
+import ui.annotations.Driver;
+import ui.extensions.UIExtension;
 import ui.pages.MainPage;
 import ui.pages.SpecializationBasePage;
 
@@ -31,9 +31,8 @@ public class SpecializationTest {
         new MainPage(driver)
                 .open()
                 .acceptCookie()
-                .specializationsComponent
-                .goToSpecializationByName(nameCourse)
-                .checkPage();
+                .specializationsComponent.goToSpecializationByName(nameCourse)
+                    .checkPage();
 
     }
 

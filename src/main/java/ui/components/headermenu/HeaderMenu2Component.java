@@ -1,10 +1,10 @@
-package ui.components.header_menu;
+package ui.components.headermenu;
 
-import ui.annotations.Component;
-import ui.components.BaseComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ui.annotations.Component;
+import ui.components.BaseComponent;
 import ui.pages.categories.CategoryLessonsPage;
 import ui.pages.courses.KotlinCoursePage;
 import ui.pages.courses.PythonCoursePage;
@@ -22,7 +22,7 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
     private WebElement programmingHeaderSubMenuItem;
 
     @FindBy(xpath = ".//a[@title='Подготовительные курсы']")
-    private WebElement preparatoryСoursesItem;
+    private WebElement preparatoryCoursesItem;
 
     @FindBy(xpath = "//a[contains(@title,'Тестирование')]/div[contains(@class,'header2-menu__dropdown-subdropdown-trigger')]")
     private WebElement testingSubMenuDpTrigger;
@@ -74,8 +74,7 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
     }
 
     public CategoryLessonsPage goToProgrammingCategoriesPage() {
-        moveToCoursesHeaderMenu().
-                programmingHeaderSubMenuItem.click();
+        moveToCoursesHeaderMenu().programmingHeaderSubMenuItem.click();
         return new CategoryLessonsPage(driver);
     }
 
@@ -86,9 +85,9 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
         return new CategoryLessonsPage(driver);
     }
 
-    public CategoryLessonsPage goToPreparatoryСourses() {
+    public CategoryLessonsPage goToPreparatoryCourses() {
         moveToCoursesHeaderMenu()
-                .preparatoryСoursesItem.click();
+                .preparatoryCoursesItem.click();
         return new CategoryLessonsPage(driver);
     }
 
@@ -101,7 +100,7 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
                 return goToTestingCategoriesPage();
             }
             case "подготовительные курсы": {
-                return goToPreparatoryСourses();
+                return goToPreparatoryCourses();
             }
         }
         return null;

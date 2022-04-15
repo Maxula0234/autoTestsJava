@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SpecializationBasePage extends BasePage<SpecializationBasePage> {
 
-    @FindBy(xpath = "//div[@class='tn-atom' and text()='Специализация']")
+    @FindBy(xpath = "//div[@class='tn-atom' and contains(text(),'пециализация')]")
     private WebElement elementSpec;
 
     public SpecializationBasePage(WebDriver driver) {

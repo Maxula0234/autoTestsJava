@@ -5,34 +5,34 @@ import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
 public class CreateUser {
 
     @JsonProperty("code")
-    private Long mCode;
+    private Long code;
     @JsonProperty("message")
-    private String mMessage;
+    private String message;
     @JsonProperty("type")
-    private String mType;
+    private String type;
 
     public Long getCode() {
-        return mCode;
+        return code;
     }
 
     public void setCode(Long code) {
-        mCode = code;
+        this.code = code;
     }
 
     public String getMessage() {
-        return mMessage;
+        return message;
     }
 
     public void setMessage(String message) {
-        mMessage = message;
+        this.message = message;
     }
 
     public String getType() {
-        return mType;
+        return type;
     }
 
     public void setType(String type) {
-        mType = type;
+        this.type = type;
     }
 
 }

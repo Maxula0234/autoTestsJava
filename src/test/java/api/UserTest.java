@@ -19,7 +19,6 @@ public class UserTest extends BaseApiTest {
     @Test
     @DisplayName("Создание клиента клиента - позитивный")
     public void createClient() {
-        //Проверим создание клиента
         String nameNewClient = "TestovichTest" + new Random().nextInt(1123);
 
         User user = User.builder()
@@ -37,7 +36,7 @@ public class UserTest extends BaseApiTest {
         User getNewUser = userApiService.getUser(nameNewClient);
 
         assertAll(
-                () -> assertThat(getNewUser.getId()).isEqualTo(Integer.parseInt(createUser.getMessage())),
+                () -> assertThat(getNewUser.getId()).isEqualTo(new BigDecimal(createUser.getMessage())),
                 () -> assertThat(getNewUser.getUsername()).isEqualTo(nameNewClient)
         );
     }
@@ -46,9 +45,6 @@ public class UserTest extends BaseApiTest {
     @Test
     @DisplayName("Создание клиента - негативный")
     public void createClientNegative() {
-        //Передадим некорректный json запрос
-        //Проверим, что клиент не создался
-
         User user = User.builder()
                 .id(new BigDecimal(0))
                 .lastName("Hor")

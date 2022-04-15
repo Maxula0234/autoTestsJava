@@ -1,4 +1,4 @@
-package ui.components.header_menu;
+package ui.components.headermenu;
 
 import ui.annotations.Component;
 import ui.components.BaseComponent;

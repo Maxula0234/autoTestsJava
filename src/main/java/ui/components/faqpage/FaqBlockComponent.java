@@ -1,4 +1,4 @@
-package ui.components.faqPage;
+package ui.components.faqpage;
 
 import ui.annotations.Component;
 import org.openqa.selenium.WebDriver;

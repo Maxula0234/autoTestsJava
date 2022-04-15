@@ -1,19 +1,17 @@
 package ui.components.contacts;
 
-import ui.annotations.Component;
-import ui.components.BaseComponent;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ui.pages.services.social_media.OkPublicPage;
-import ui.pages.services.social_media.VkPublicPage;
+import ui.annotations.Component;
+import ui.components.BaseComponent;
+import ui.pages.services.socialmedia.OkPublicPage;
+import ui.pages.services.socialmedia.VkPublicPage;
 
 import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Slf4j
 @Component("//div[contains(@class,'dHdjyV') and text()='Социальные сети']")
@@ -21,9 +19,6 @@ public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
 
     @FindBy(xpath = "//a[text()='Вконтакте']")
     private WebElement vk;
-
-    @FindBy(xpath = "//a[text()='Facebook']")
-    private WebElement faceBook;
 
     @FindBy(xpath = "//a[text()='ОК']")
     private WebElement ok;
@@ -46,14 +41,13 @@ public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
 
     @Step("Проверим отображение социальных сетей")
     public void checkSocialMedia() {
-        assertAll(
-                () -> assertThat(vk.isDisplayed()).as("Вк не отображен").isTrue(),
-                () -> assertThat(faceBook.isDisplayed()).as("FaceBook не отображен").isTrue(),
-                () -> assertThat(ok.isDisplayed()).as("ОК не отображен").isTrue(),
-                () -> assertThat(dzen.isDisplayed()).as("Дзен не отображен").isTrue(),
-                () -> assertThat(youTube.isDisplayed()).as("YouTube не отображен").isTrue(),
-                () -> assertThat(channelTelegram.isDisplayed()).as("Канал в ТГ не отображен").isTrue(),
-                () -> assertThat(groupTelegram.isDisplayed()).as("Группа в ТГ не отображена").isTrue()
+        org.junit.jupiter.api.Assertions.assertAll(
+                () -> Assertions.assertThat(vk.isDisplayed()).as("Вк не отображен").isTrue(),
+                () -> Assertions.assertThat(ok.isDisplayed()).as("ОК не отображен").isTrue(),
+                () -> Assertions.assertThat(dzen.isDisplayed()).as("Дзен не отображен").isTrue(),
+                () -> Assertions.assertThat(youTube.isDisplayed()).as("YouTube не отображен").isTrue(),
+                () -> Assertions.assertThat(channelTelegram.isDisplayed()).as("Канал в ТГ не отображен").isTrue(),
+                () -> Assertions.assertThat(groupTelegram.isDisplayed()).as("Группа в ТГ не отображена").isTrue()
         );
         log.info("Социальные сети отображены");
     }

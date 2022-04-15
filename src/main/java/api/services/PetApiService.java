@@ -7,8 +7,8 @@ import io.restassured.specification.RequestSpecification;
 import java.util.List;
 
 public class PetApiService extends BaseRestClient {
-    private final String PET = "/pet";
-    private final String PET_FIND_BY_STATUS = "/pet/findByStatus";
+    private static final String PET = "/pet";
+    private static final String PET_FIND_BY_STATUS = "/pet/findByStatus";
 
     @Override
     public RequestSpecification jsonRequest() {

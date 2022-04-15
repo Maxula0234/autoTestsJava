@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ui.annotations.UrlPrefix;
 import ui.components.SpecializationsComponent;
-import ui.components.header_menu.HeaderMenu1Component;
-import ui.components.header_menu.HeaderMenu2Component;
+import ui.components.headermenu.HeaderMenu1Component;
+import ui.components.headermenu.HeaderMenu2Component;
 
 @UrlPrefix("/")
 public class MainPage extends BasePage<MainPage> {

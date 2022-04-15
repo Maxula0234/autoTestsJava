@@ -1,10 +1,10 @@
 package ui.pages.services;
 
-import ui.annotations.UrlPrefix;
-import ui.components.faqPage.FaqBlockComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ui.annotations.UrlPrefix;
+import ui.components.faqpage.FaqBlockComponent;
 import ui.pages.BasePage;
 
 import java.util.List;
@@ -14,13 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @UrlPrefix("/faq")
 public class FaqPage extends BasePage<FaqPage> {
+    public FaqBlockComponent faqBlockComponent;
     @FindBy(xpath = "//h1[normalize-space(text())='Отвечаем на ваши']")
     private WebElement headerInfo;
-
     @FindBy(xpath = "//div[contains(@class,'faq-question__question')]")
     private List<WebElement> questions;
-
-    public FaqBlockComponent faqBlockComponent;
 
     public FaqPage(WebDriver driver) {
         super(driver);

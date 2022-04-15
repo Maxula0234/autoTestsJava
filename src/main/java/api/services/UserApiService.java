@@ -8,8 +8,8 @@ import io.restassured.specification.RequestSpecification;
 
 public class UserApiService extends BaseRestClient {
 
-    private final String POST_USER = "/user";
-    private final String GET_USER = "/user/{userName}";
+    private static final String POST_USER = "/user";
+    private static final String GET_USER = "/user/{userName}";
 
     @Override
     public RequestSpecification jsonRequest() {
