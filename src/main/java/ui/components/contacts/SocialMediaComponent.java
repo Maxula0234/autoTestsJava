@@ -20,9 +20,6 @@ public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
     @FindBy(xpath = "//a[text()='Вконтакте']")
     private WebElement vk;
 
-    @FindBy(xpath = "//a[text()='Facebook']")
-    private WebElement faceBook;
-
     @FindBy(xpath = "//a[text()='ОК']")
     private WebElement ok;
 
@@ -46,7 +43,6 @@ public class SocialMediaComponent extends BaseComponent<SocialMediaComponent> {
     public void checkSocialMedia() {
         org.junit.jupiter.api.Assertions.assertAll(
                 () -> Assertions.assertThat(vk.isDisplayed()).as("Вк не отображен").isTrue(),
-                () -> Assertions.assertThat(faceBook.isDisplayed()).as("FaceBook не отображен").isTrue(),
                 () -> Assertions.assertThat(ok.isDisplayed()).as("ОК не отображен").isTrue(),
                 () -> Assertions.assertThat(dzen.isDisplayed()).as("Дзен не отображен").isTrue(),
                 () -> Assertions.assertThat(youTube.isDisplayed()).as("YouTube не отображен").isTrue(),
