@@ -12,6 +12,18 @@ import ui.pages.courses.PythonCoursePage;
 @Component("//div[contains(@class,'container-header2')]")
 public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
 
+    @FindBy(css = ".header2-menu__icon")
+    private WebElement iconLogoClient;
+
+    @FindBy(css = ".header2-menu__item-wrapper__username")
+    private WebElement authMenu;
+
+    @FindBy(css = ".header2-menu__dropdown-text")
+    private WebElement myProfile;
+
+    @FindBy(xpath = "//a[@href='/learning/'][@title='Личный кабинет']")
+    private WebElement lc;
+
     @FindBy(xpath = ".//p[normalize-space(text())='Курсы']")
     private WebElement coursesHeaderMenu;
 
@@ -104,5 +116,14 @@ public class HeaderMenu2Component extends BaseComponent<HeaderMenu2Component> {
             }
         }
         return null;
+    }
+
+    public WebElement getIconLogoClient() {
+        return iconLogoClient;
+    }
+
+    public HeaderMenu2Component goToLc() {
+        lc.click();
+        return this;
     }
 }

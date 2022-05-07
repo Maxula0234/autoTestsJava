@@ -1,10 +1,12 @@
 package ui.pages;
 
-import ui.actions.CommonActions;
-import ui.annotations.UrlPrefix;
 import io.qameta.allure.Step;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import ui.actions.CommonActions;
+import ui.annotations.UrlPrefix;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -63,5 +65,9 @@ public abstract class BasePage<T> extends CommonActions<T> {
 
     public String getUrl() {
         return getBaseUrl() + getUrlPrefix();
+    }
+
+    public void waitAndClick(WebElement element) {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 }
