@@ -1,5 +1,6 @@
 package ui.courses;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,22 @@ public class MainPageTest {
         mainPage.open().clickReg();
         String titlePage = mainPage.getTitlePage();
         assertThat(titlePage).isNotEmpty();
+    }
+
+    @Test
+    @Description("Авторизация")
+    public void loginTest() {
+        String login = "vladoladvlad@gtest.com";
+        String password = "veryStrongPassword111!";
+
+        MainPage mainPage = new MainPage(driver)
+                .open()
+                .clickReg()
+                .enterName(login)
+                .enterPassword(password)
+                .clickButtonEnter();
+
+        mainPage.checkAuthClient("Владимир");
     }
 
 }
