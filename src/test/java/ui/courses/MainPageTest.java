@@ -13,7 +13,6 @@ public class MainPageTest {
     @Driver()
     WebDriver driver;
 
-
     @Test
     public void loginTest() {
         MainPage mainPage = new MainPage(driver);
