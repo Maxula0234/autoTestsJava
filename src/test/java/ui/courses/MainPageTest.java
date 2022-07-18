@@ -7,21 +7,22 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @ExtendWith(UIExtension.class)
 public class MainPageTest {
 
     @Driver()
     WebDriver driver;
 
+
     @Test
-    public void openMainPage() {
+    public void loginTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open()
-                .reg.click();
-        String titlePage = mainPage.getTitlePage();
-        assertThat(titlePage).isNotEmpty();
+                .clickLoginOrReg()
+                .inputLogin("vladoladvlad@gtest.com")
+                .inputPassword("veryStrongPassword111!")
+                .enterLogIn()
+                .checkLogin();
     }
 
 }
